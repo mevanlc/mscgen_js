@@ -1,4 +1,4 @@
-@import "./colors";
+@use "./colors" as *;
 .code {
   font-family: monospace; /* Monaco, Consolas, 'Andale Mono'; */
   font-size: .7em;

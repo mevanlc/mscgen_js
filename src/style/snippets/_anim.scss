@@ -1,4 +1,4 @@
-@import "./colors";
+@use "./colors" as *;
 #__animscreen {
   position: absolute;
   top: 0;

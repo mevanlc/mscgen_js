@@ -1,4 +1,4 @@
-@import "./colors";
+@use "./colors" as *;
 
 body {
   counter-reset: article-counter;

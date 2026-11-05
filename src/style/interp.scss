@@ -1,14 +1,14 @@
-@import "./snippets/fonts";
-@import "../../node_modules/codemirror/lib/codemirror";
-@import "../../node_modules/codemirror/addon/dialog/dialog";
-@import "../../node_modules/codemirror/theme/blackboard";
-@import "./snippets/generics";
-@import "./snippets/header";
-@import "./snippets/interpreter";
-@import "./snippets/slidingpanel";
-@import "./snippets/anim";
-@import "./snippets/mediagenerics";
-@import "./snippets/toast";
+@use "./snippets/fonts";
+@use "../../node_modules/codemirror/lib/codemirror";
+@use "../../node_modules/codemirror/addon/dialog/dialog";
+@use "../../node_modules/codemirror/theme/blackboard";
+@use "./snippets/generics";
+@use "./snippets/header";
+@use "./snippets/interpreter";
+@use "./snippets/slidingpanel";
+@use "./snippets/anim";
+@use "./snippets/mediagenerics";
+@use "./snippets/toast";
 /*
  This file is part of mscgen_js.
 
