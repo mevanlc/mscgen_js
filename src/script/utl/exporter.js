@@ -1,7 +1,7 @@
 var ast2dot = require('mscgenjs/dist/cjs/render/text/ast2dot')
 var ast2mscgen = require('mscgenjs/dist/cjs/render/text/ast2mscgen')
 var ast2doxygen = require('mscgenjs/dist/cjs/render/text/ast2doxygen')
-const queryString = require('query-string')
+const queryString = require('query-string').default
 
 /* max length of an URL on github (4122) - "https://sverweij.github.io/".length (27) - 1 */
 var MAX_LOCATION_LENGTH = 4094

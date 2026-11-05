@@ -1,5 +1,5 @@
 var uistate = require('./uistate')
-const queryString = require('query-string')
+const queryString = require('query-string').default
 var store = require('../utl/store')
 var $ = require('../utl/domutl')
 var maps = require('../utl/maps')

@@ -47,12 +47,25 @@ E.g  `https://sverweij.github.io/mscgen_js/feature/snazz-the-firp`
 - `npm run check` combination target that runs the linter, dependency-cruiser,
     the tests and the coverage
 
+- `npm audit`
+    - checks installed dependencies for known vulnerabilities; run `npm install`
+      first to generate the locally ignored lockfile
+
+The `glob@>=9` and `minimatch@>=7` overrides in `package.json` keep `c8` and
+`upem` on versions patched for [glob cancellation][glob-advisory] and
+[minimatch pattern amplification][minimatch-advisory]. They are scoped to the
+newer APIs so `sw-precache` can continue using the older callback API. Remove
+the overrides once those tools require patched versions themselves.
+
 ## Prerequisites
 - make
 - npm
-- nodejs
+- Node.js 20.19+, 22.17+, or 24+ (matching `package.json`)
 - bash (cp, mkdir, rm, sed, grep, expr)
 - all javascript necessary to run mscgen_js and/ or the online interpreter in the browser is already included in the `src` tree
 - for the rest: run an ```npm install```
 - git
 - imagemagick and optipng (re-generating favicons that are already in the `src` tree)
+
+[glob-advisory]: https://github.com/advisories/GHSA-3g3m-2fjr-6pw4
+[minimatch-advisory]: https://github.com/advisories/GHSA-g3hv-75wg-m249
