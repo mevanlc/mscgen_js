@@ -69,6 +69,9 @@ legend {
     font-size: 0.7em;
 }
 article {
+    --editor-min-width: 280px;
+    --output-min-width: 240px;
+    --resize-handle-width: 16px;
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
@@ -80,6 +83,10 @@ article {
     display: -webkit-flex;
     flex-direction: column;
     -webkit-flex-direction: column;
+    min-width: 0;
+}
+#__editor_resize_handle {
+    display: none;
 }
 #__input_top_area {
     display: flex;
@@ -142,19 +149,49 @@ article {
 }
 
 @media screen and (orientation: landscape) and (min-width: 769px) {
-    @media (min-width: 640px) and (max-width: 1024px) {
-      #__input_area{
-        width: 448px;
-        min-width: 448px;
-        transition: $width-transition;
-      }
+    #__input_area {
+        width: clamp(var(--editor-min-width), var(--editor-width, 448px), calc(100% - var(--output-min-width) - var(--resize-handle-width)));
+        flex: 0 0 auto;
     }
     @media (min-width: 1025px) {
-      #__input_area{
-         width: 512px;
-         min-width: 512px;
-         transition: $width-transition;
-      }
+        #__input_area {
+            width: clamp(var(--editor-min-width), var(--editor-width, 512px), calc(100% - var(--output-min-width) - var(--resize-handle-width)));
+        }
+    }
+    #__input_top_area {
+        flex-wrap: wrap;
+    }
+    #__output_area {
+        flex: 1;
+        width: auto;
+        min-width: var(--output-min-width);
+        box-sizing: border-box;
+    }
+    #__editor_resize_handle {
+        display: flex;
+        flex: 0 0 var(--resize-handle-width);
+        align-items: center;
+        justify-content: center;
+        cursor: col-resize;
+        touch-action: none;
+    }
+    #__editor_resize_handle::before {
+        content: "";
+        width: 3px;
+        height: 48px;
+        border-radius: 3px;
+        background-color: $light-color;
+    }
+    #__editor_resize_handle:hover, #__editor_resize_handle:focus-visible {
+        background-color: $button-background-color;
+    }
+    #__editor_resize_handle:focus-visible {
+        outline: 2px solid $info-color;
+        outline-offset: -2px;
+    }
+    article.is-resizing, article.is-resizing * {
+        cursor: col-resize !important;
+        user-select: none !important;
     }
 
     @include resize-editor (0px  , 400px);

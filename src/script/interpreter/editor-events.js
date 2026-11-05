@@ -1,6 +1,7 @@
 var uistate = require('./uistate')
 var codemirror = require('codemirror')
 var maps = require('../utl/maps')
+var editorResizer = require('./editor-resizer')
 require('codemirror/addon/edit/closebrackets')
 require('codemirror/addon/edit/matchbrackets')
 require('codemirror/addon/display/placeholder')
@@ -107,6 +108,9 @@ module.exports = {
     init(pElement)
     uistate.init(gCodeMirror)
     setupEditorEvents()
+    editorResizer.init(window.__input_area, window.__editor_resize_handle, function () {
+      gCodeMirror.refresh()
+    })
   }
 }
 /*

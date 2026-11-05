@@ -68,6 +68,10 @@ npm run serve
 Open <http://127.0.0.1:8080>. The command builds the app into `build/local/` and
 starts a local server. Restart it after editing source files to rebuild.
 
+On wide screens, drag the divider between the editor and chart to resize the
+editor. Focus the divider to use Left/Right arrows (Shift for larger steps),
+Home, or End. Double-click it to restore the default width.
+
 See [build.md][mscgenjs.docbuild]. If you want to understand how mscgen_js'
 innards work: we try to explain that
 [in the script folder][mscgenjs.docsource].
