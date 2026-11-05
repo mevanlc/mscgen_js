@@ -4,6 +4,7 @@
 .settings/*
 *.swo
 *.swp
+/build/
 *tmp*
 *tmp*.*
 coverage

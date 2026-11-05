@@ -58,6 +58,16 @@ If you find proof to the contrary on any of this
 
 
 ## Building mscgen_js yourself
+To run the online interpreter locally:
+
+```sh
+npm install
+npm run serve
+```
+
+Open <http://127.0.0.1:8080>. The command builds the app into `build/local/` and
+starts a local server. Restart it after editing source files to rebuild.
+
 See [build.md][mscgenjs.docbuild]. If you want to understand how mscgen_js'
 innards work: we try to explain that
 [in the script folder][mscgenjs.docsource].

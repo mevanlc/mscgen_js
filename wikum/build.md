@@ -9,6 +9,17 @@ make prerequisites #  (or `npm install`)
 make build # or `npm run build`
 ```
 
+### Running locally
+
+After `npm install`, run `npm run serve` and open <http://127.0.0.1:8080>.
+This builds the interpreter, tutorial, and embedding guide into the ignored
+`build/local/` folder, then serves that folder locally. Stop with Ctrl+C and rerun
+the command after source changes to rebuild. To choose another port, use
+`npm run serve -- --port 8081`.
+
+The local build uses development mode, which disables service worker
+registration, and the server disables HTTP caching.
+
 ### Development vs Production build
 If you're on the `master` branch the build system will create a production
 build in the `docs` folder.
