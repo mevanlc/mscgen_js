@@ -2,6 +2,26 @@ const assert = require('node:assert/strict')
 const xport = require('../../utl/exporter')
 const { describe, it } = require('node:test')
 
+describe('hidden export compatibility', function () {
+  const options = {}
+  it('exports ordinary Xu and JSON to HTML', function () {
+    assert.match(xport.toHTMLSnippet('xu { a,b; a => b; }', 'xu', options), /a =&gt; b|a => b/)
+    assert.match(xport.toHTMLSnippet(JSON.stringify({ entities: [] }), 'json', options), /entities/)
+  })
+  it('blocks HTML and lossy text exports, including explicit false and inherit', function () {
+    const parse = require('mscgenjs/dist/cjs/parse/xuparser').parse
+    for (const value of ['true', 'false', 'inherit']) {
+      const source = 'xu { a,b; a loop b { a => b [hidden=' + value + ']; }; }'
+      const ast = parse(source)
+      assert.throws(() => xport.toHTMLSnippetURI(source, 'xu', options), /HTML embedding cannot preserve hidden/)
+      assert.throws(() => xport.toHTMLSnippetURI(JSON.stringify(ast), 'json', options), /HTML embedding cannot preserve hidden/)
+      for (const convert of [xport.todotURI, xport.toVanillaMscGenURI, xport.toDoxygenURI]) {
+        assert.throws(() => convert(ast), /cannot preserve hidden/)
+      }
+    }
+  })
+})
+
 const gAST = {
   meta: {
     extendedOptions: false,

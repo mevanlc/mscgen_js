@@ -1,0 +1,30 @@
+.<%=id%> line, .<%=id%> path{
+    stroke:rgba(0, 43, 84, 1)
+}
+.<%=id%> text{
+    fill:rgba(0, 43, 84, 1)
+}
+.<%=id%> .entity,.<%=id%> .box{
+    fill:rgba(0, 43, 84, 1);
+    stroke:rgba(0, 43, 84, 1)
+}
+.<%=id%> text.box-text{
+    fill:white
+}
+.<%=id%> text.entity-text{
+    font-weight:bold;
+    fill:white;
+    text-decoration:none
+}
+.<%=id%> text.return-text{
+    font-style:italic
+}
+.<%=id%> path.note{
+    fill:rgba(255, 50, 0, 1);stroke:white
+}
+.<%=id%> .comment,
+    .<%=id%> .inline_expression,
+    .<%=id%> .inline_expression_divider,
+    .<%=id%> .inline_expression_label{
+    fill:white
+}

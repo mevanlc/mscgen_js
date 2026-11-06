@@ -15,27 +15,27 @@ a picture:
   - for the [atom editor package](https://github.com/sverweij/atom-mscgen-preview)
 
 ## Lexical analysis and parsing
-:page_with_curl: code in [parse/peg](parse/peg)
+:page_with_curl: code in the [vendored core](../../vendor/mscgenjs-core/src/parse)
 
 We wrote the parsers for `mscgen`, `msgenny` and `xù` with
-PEG.js. This is a parser generator that smashes the tasks of lexical
-analysis and parsing together. In the [parser folder](parse/peg/README.md) we describe
-* [how to generate the parsers from pegjs](parse/peg/README.md#generating-the-parsers)
-* [the structure of and principles behind the abstract syntax trees](parse/peg/README.md#the-abstract-syntax-tree)
+Peggy. This is a parser generator that combines lexical analysis and parsing.
+The [parser documentation](../../vendor/mscgenjs-core/src/parse/README.md) describes
+parser generation and the abstract syntax trees. The root npm build compiles the
+vendored core workspace before bundling the editor.
 
 
 ## Rendering
 ### Rendering graphics
-:page_with_curl: code in [render/graphics/](render/graphics)
+:page_with_curl: code in [render/graphics/](../../vendor/mscgenjs-core/src/render/graphics)
 
 *mscgen_js* by default renders its graphics to _scalable vector graphics_ (SVG).
-In the [render folder](render/graphics/README.md) we
+In the [render folder](../../vendor/mscgenjs-core/src/render/graphics/README.md) we
 - motivate this choice,
 - describe how our SVG is structured and
 - how the rendering programs fill it.
 
 ### Rendering text
-:page_with_curl: code in [render/text/](render/text)
+:page_with_curl: code in [render/text/](../../vendor/mscgenjs-core/src/render/text)
 
 To **translate** between the three sequence chart languages it supports and to
 **generate** and **manipulate** other languages.

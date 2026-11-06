@@ -1,0 +1,4 @@
+svg.<%=id%>{
+    filter:grayscale(1);
+    -webkit-filter:grayscale(1);
+}

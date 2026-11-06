@@ -6,8 +6,8 @@
   "lines": 99.7,
   "exclude": [
     "docs/",
-    "tools/"
+    "tools/",
+    "vendor/"
   ],
   "reporter": ["text-summary", "html", "json-summary"]
 }
-

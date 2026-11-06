@@ -97,6 +97,7 @@ SAMPLES= \
 	src/samples/test52_alt_within_loop.xu \
 	src/samples/test53_all_expansions.xu \
 	src/samples/test54_nesting.xu \
+	src/samples/test55_hidden_elements.xu \
 	src/samples/testxx_humongous01.mscin \
 	src/samples/testxx_humongous02.mscin \
 	src/samples/wordfeud.mscgen \

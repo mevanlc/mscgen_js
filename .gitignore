@@ -17,3 +17,8 @@ src/*tmp*.*
 src/favicon.ico
 tmp_*.md
 tracking.*
+/vendor/mscgenjs-core/dist/
+/vendor/mscgenjs-core/coverage/
+/vendor/mscgenjs-core/src/parse/*parser.js
+/vendor/mscgenjs-core/src/render/graphics/csstemplates.ts
+/vendor/mscgenjs-core/src/version.json

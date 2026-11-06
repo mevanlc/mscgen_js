@@ -1,0 +1,18 @@
+.<%=id%> text.entity-text{
+    font-weight:bold;
+}
+.<%=id%> text.return-text{
+    font-style:italic
+}
+.<%=id%> path.note{
+    fill:#FFFFCC
+}
+.<%=id%> rect.label-text-background{
+    opacity:0.9
+}
+.<%=id%> line.comment,
+    .<%=id%> rect.inline_expression,
+    .<%=id%> .inline_expression_divider,
+    .<%=id%> .inline_expression_label{
+    stroke:grey
+}

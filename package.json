@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "codemirror": "5.65.20",
-    "mscgenjs": "8.0.0",
+    "mscgenjs": "file:vendor/mscgenjs-core",
     "query-string": "9.5.1"
   },
   "devDependencies": {
@@ -60,8 +60,8 @@
     ]
   },
   "scripts": {
-    "build": "make clean build",
-    "check": "npm-run-all --parallel depcruise test:cover",
+    "build": "npm run build:core && make clean build",
+    "check": "npm run test:cover && npm-run-all --parallel depcruise check:core",
     "depcruise": "depcruise src/script",
     "depcruise:graph": "npm-run-all --parallel depcruise:graph:*",
     "depcruise:graph:png": "depcruise --output-type dot src/script/mscgen-interpreter.js | dot -Gdpi=192 -Gsplines=ortho -T png | pngquant - > docs/dependencygraph.png",
@@ -73,12 +73,17 @@
     "scm:stage": "git add .",
     "serve": "npm run build -- BUILDDIR=build/local MODE=development && sirv build/local --dev --host 127.0.0.1",
     "test": "node --test-reporter ./tools/dot-with-summary.reporter.js --test src/script/test/**/*.spec.js",
-    "test:cover": "c8 npm test",
+    "test:cover": "c8 node --test-reporter ./tools/dot-with-summary.reporter.js --test src/script/test/**/*.spec.js",
     "update-dependencies": "npm-run-all upem:update upem:install build check",
     "upem-outdated": "npm outdated --json --long | upem --dry-run",
     "upem:update": "npm outdated ---json --long | upem | pbcopy && pbpaste",
     "upem:install": "npm install",
-    "version": "npm-run-all build depcruise:graph scm:stage"
+    "version": "npm-run-all build depcruise:graph scm:stage",
+    "build:core": "npm run build --workspace mscgenjs",
+    "pretest": "npm run build:core",
+    "check:core": "npm run check --workspace mscgenjs",
+    "pretest:cover": "npm run build:core",
+    "test:browser": "npm run build -- BUILDDIR=build/local MODE=development && node tools/check-hidden-browser.js"
   },
   "overrides": {
     "cross-spawn": "^7.0.5",
@@ -87,5 +92,8 @@
     "minimatch@>=7": "^11.0.4",
     "trim-newlines": "^3.0.1"
   },
-  "private": true
+  "private": true,
+  "workspaces": [
+    "vendor/mscgenjs-core"
+  ]
 }

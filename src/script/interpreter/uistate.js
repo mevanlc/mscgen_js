@@ -269,7 +269,12 @@ module.exports = {
         setSource(renderSource(lAST, pLanguage))
       }
     } catch (e) {
-      // do nothing
+      // Restore the selected radio without rendering or replacing the chart.
+      window.__language_mscgen.checked = ['mscgen', 'xu'].includes(state.getLanguage())
+      window.__language_msgenny.checked = state.getLanguage() === 'msgenny'
+      window.__language_json.checked = state.getLanguage() === 'json'
+      handleRenderException(e, getSource())
+      return
     }
     setLanguage(pLanguage)
   },
@@ -317,6 +322,9 @@ module.exports = {
      * @type {string} language (one of mscgen, xu, msgenny or json)
      */
   render,
+  showActionError: function (pException) {
+    handleRenderException(pException, getSource())
+  },
 
   /**
      *  parse + renders the current source in the current

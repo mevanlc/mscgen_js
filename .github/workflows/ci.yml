@@ -29,8 +29,10 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/cache@v6
         with:
-          path: node_modules
-          key: ${{matrix.node-version}}@${{matrix.platform}}-build-${{hashFiles('package.json')}}
+          path: |
+            node_modules
+            vendor/mscgenjs-core/node_modules
+          key: ${{matrix.node-version}}@${{matrix.platform}}-build-${{hashFiles('package.json', 'vendor/mscgenjs-core/package.json')}}
           restore-keys: |
             ${{matrix.node-version}}@${{matrix.platform}}-build-
       - uses: actions/setup-node@v7
@@ -40,7 +42,5 @@ jobs:
         run: |
           npm install
           npm run build
-      - name: lint & forbidden dependency check
-        run: |
-          npm run depcruise
-      - run: npm run test:cover
+      - name: editor and core checks
+        run: npm run check

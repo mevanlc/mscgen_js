@@ -72,6 +72,11 @@ On wide screens, drag the divider between the editor and chart to resize the
 editor. Focus the divider to use Left/Right arrows (Shift for larger steps),
 Home, or End. Double-click it to restore the default width.
 
+Xu supports `[hidden=true]` to hide an element while retaining its complete
+layout. Nested elements inherit visibility by default; `[hidden=false]` reveals
+a descendant of a hidden block. See [hidden elements](wikum/xu.md#hidden-elements).
+The parser and renderer are built from the vendored core workspace; `npm run check` checks both the core and editor.
+
 See [build.md][mscgenjs.docbuild]. If you want to understand how mscgen_js'
 innards work: we try to explain that
 [in the script folder][mscgenjs.docsource].

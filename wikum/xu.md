@@ -141,6 +141,40 @@ xu {
 Just like msgenny, Xù supports a "watermark" _option_: ```watermark="xù rocks!"```; that puts a watermark diagonally on the rendered chart.
 
 
+### Hidden elements
+
+Use `hidden` on entities, messages, notes, boxes, separators, empty/omitted rows,
+or inline-expression blocks:
+
+```xu
+xu {
+  a, b;
+  a loop b [hidden=true, label="Hidden block"] {
+    a => b [label="Hidden by inheritance"];
+    b => a [hidden=false, label="Visible inside the hidden block"];
+  };
+  a note b [hidden=inherit, label="Visible at the top level"];
+}
+```
+
+The values are `true` (hide), `false` (show), and `inherit` (the default).
+Values may be quoted and are case insensitive. Inheritance follows enclosing
+inline expressions; the top level is visible. An explicit value overrides the
+nearest ancestor and becomes the default for that element's descendants.
+
+Hidden elements still contribute their labels, spacing, rows, and nesting to the
+layout. Changing only visibility preserves the geometry and style of the other
+elements, including strokes in the lazy style. Hiding an entity hides its header,
+mirrored footer, and lifeline while retaining its column. References to an entity
+do not inherit its visibility: connected messages and notes remain independently
+visible. Lifelines through a hidden block follow their entity's visibility.
+
+Xu and JSON retain all three states, including an explicit `false` or `inherit`.
+SVG, PNG, and JPEG exports honor visibility. Conversions to MsGenny, vanilla
+MscGen, Doxygen, DOT, and the current HTML embedding bundle are blocked when the
+chart contains a `hidden` attribute, because these targets cannot preserve it.
+HTML embedding support is deferred.
+
 ## MsGenny
 [MsGenny](./msgenny.md) also has support for inline expressions, the if-then-else construct above
 would look something like this:

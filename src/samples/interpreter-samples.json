@@ -74,6 +74,10 @@
     "label": "reference",
     "values": [
       {
+        "label": "hidden elements with stable layout (Xu)",
+        "value": "samples/test55_hidden_elements.xu"
+      },
+      {
         "label": "auto entities",
         "value": "samples/test11_autodeclaration.msgenny",
         "debug": true

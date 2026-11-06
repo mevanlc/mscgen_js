@@ -1,0 +1,14 @@
+xu {
+  wordwraparcs=true;
+  client, service, storage [hidden=true];
+
+  client => service [label="Visible request"];
+  service loop storage [hidden=true, label="Hidden implementation details"] {
+    service => storage [label="Hidden lookup"];
+    storage >> service [label="Hidden result"];
+    service note storage [hidden=false, label="This note is explicitly visible"];
+  };
+  service >> client [label="Visible response"];
+  --- [hidden=true, label="Hidden separator still reserves space"];
+  client note storage [label="The hidden storage column still occupies its normal space"];
+}

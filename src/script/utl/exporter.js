@@ -1,6 +1,8 @@
 var ast2dot = require('mscgenjs/dist/cjs/render/text/ast2dot')
 var ast2mscgen = require('mscgenjs/dist/cjs/render/text/ast2mscgen')
 var ast2doxygen = require('mscgenjs/dist/cjs/render/text/ast2doxygen')
+var visibility = require('mscgenjs/dist/cjs/parse/visibility')
+var xuparser = require('mscgenjs/dist/cjs/parse/xuparser')
 const queryString = require('query-string').default
 
 /* max length of an URL on github (4122) - "https://sverweij.github.io/".length (27) - 1 */
@@ -58,6 +60,11 @@ function extractSource (pSource) {
 }
 
 function toHTMLSnippet (pSource, pLanguage, pOptions) {
+  if (pLanguage === 'json') {
+    visibility.assertVisibilitySupported(JSON.parse(pSource), 'HTML embedding')
+  } else if (pLanguage !== 'msgenny') {
+    visibility.assertVisibilitySupported(xuparser.parse(pSource), 'HTML embedding')
+  }
   return gTemplate
     .replace(/{{config}}/g, extractLinkToEditor(pOptions.withLinkToEditor))
     .replace(/{{language}}/g, pLanguage)

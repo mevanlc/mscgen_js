@@ -1,0 +1,31 @@
+.<%=id%> line, .<%=id%> path{
+    stroke:#00A1DE
+}
+.<%=id%> text{
+    fill:#005B82
+}
+.<%=id%> .entity,.<%=id%> .box{
+    fill:#00A1DE;
+    stroke:#00A1DE
+}
+.<%=id%> text.box-text{
+    fill:white
+}
+.<%=id%> text.entity-text{
+    font-weight:bold;
+    fill:white;
+    text-decoration:none
+}
+.<%=id%> text.return-text{
+    font-style:italic
+}
+.<%=id%> path.note{
+    fill:#E77B2F;
+    stroke:white
+}
+.<%=id%> .comment,
+    .<%=id%> .inline_expression,
+    .<%=id%> .inline_expression_divider,
+    .<%=id%> .inline_expression_label{
+    fill:white
+}

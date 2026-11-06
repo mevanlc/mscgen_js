@@ -10,6 +10,7 @@ require('codemirror/addon/search/searchcursor')
 require('codemirror/addon/search/search')
 require('codemirror/addon/selection/active-line')
 require('codemirror/mode/mscgen/mscgen')
+require('./xu-mode')
 require('codemirror/mode/javascript/javascript')
 
 var gGaKeyCount = 0

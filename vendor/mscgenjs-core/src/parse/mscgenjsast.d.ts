@@ -1,0 +1,175 @@
+export interface IMeta {
+  extendedOptions: boolean;
+  extendedArcTypes: boolean;
+  extendedFeatures: boolean;
+}
+
+export interface IOptions {
+  hscale?: string | number;
+  arcgradient?: string;
+  width?: string;
+  wordwraparcs?: boolean;
+  wordwrapentities?: boolean;
+  wordwrapboxes?: boolean;
+  watermark?: string;
+}
+
+export interface IOptionsNormalized {
+  hscale?: string | number;
+  arcgradient?: string;
+  width?: string;
+  wordwraparcs: boolean;
+  wordwrapentities: boolean;
+  wordwrapboxes: boolean;
+  watermark?: string;
+}
+
+export type Hidden = boolean | "inherit";
+
+export interface IEntity {
+  hidden?: Hidden;
+  name: string;
+  label?: string;
+  id?: string;
+  idurl?: string;
+  url?: string;
+  linecolor?: string;
+  textcolor?: string;
+  textbgcolor?: string;
+  arclinecolor?: string;
+  arctextcolor?: string;
+  arctextbgcolor?: string;
+  arcskip?: number;
+  title?: string;
+}
+
+export type ArcKindType =
+  | "|||"
+  | "..."
+  | "---"
+  | "--"
+  | "<->"
+  | "=="
+  | "<=>"
+  | "<<=>>"
+  | ".."
+  | "<<>>"
+  | "::"
+  | "<:>"
+  | "->"
+  | "<-"
+  | "=>>"
+  | "<<="
+  | "=>"
+  | "<="
+  | ">>"
+  | "<<"
+  | ":>"
+  | "<:"
+  | "-x"
+  | "x-"
+  | "box"
+  | "note"
+  | "abox"
+  | "rbox"
+  | "alt"
+  | "else"
+  | "opt"
+  | "break"
+  | "par"
+  | "seq"
+  | "strict"
+  | "neg"
+  | "critical"
+  | "ignore"
+  | "consider"
+  | "assert"
+  | "loop"
+  | "ref"
+  | "exc";
+
+export type ArcKindClassType =
+  | "empty-row"
+  | "omitted-row"
+  | "comment-row"
+  | "signal"
+  | "method"
+  | "callback"
+  | "return"
+  | "emphasised"
+  | "lost";
+
+export type ArcKindNormalizedType =
+  | "|||"
+  | "..."
+  | "---"
+  | "--"
+  | "<->"
+  | "=="
+  | "<=>"
+  | "<<=>>"
+  | ".."
+  | "<<>>"
+  | "::"
+  | "<:>"
+  | "->"
+  | "=>>"
+  | "=>"
+  | ">>"
+  | ":>"
+  | "-x"
+  | "box"
+  | "note"
+  | "abox"
+  | "rbox"
+  | "alt"
+  | "else"
+  | "opt"
+  | "break"
+  | "par"
+  | "seq"
+  | "strict"
+  | "neg"
+  | "critical"
+  | "ignore"
+  | "consider"
+  | "assert"
+  | "loop"
+  | "ref"
+  | "exc";
+
+export type ArcKindAggregatedType =
+  | "empty"
+  | "box"
+  | "directional"
+  | "bidirectional"
+  | "nondirectional"
+  | "inline_expression";
+
+export interface IArc {
+  hidden?: Hidden;
+  kind: ArcKindType;
+  from?: string;
+  to?: string;
+  arcs?: IArc[][];
+  label?: string;
+  id?: string;
+  idurl?: string;
+  url?: string;
+  linecolor?: string;
+  textcolor?: string;
+  textbgcolor?: string;
+  arclinecolor?: string;
+  arctextcolor?: string;
+  arctextbgcolor?: string;
+  arcskip?: number;
+  title?: string;
+}
+
+export interface ISequenceChart {
+  precomment?: string[];
+  meta: IMeta;
+  options?: IOptions;
+  entities: IEntity[];
+  arcs?: IArc[][];
+}

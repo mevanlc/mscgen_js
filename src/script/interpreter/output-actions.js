@@ -42,12 +42,20 @@ function showSaveAsOnClick () {
   )
 }
 
+function openExport (pCreateURI) {
+  try {
+    window.open(pCreateURI())
+  } catch (error) {
+    uistate.showActionError(error)
+  }
+}
+
 module.exports = {
   svgOnDblClick: null,
   showSaveAsOnClick,
   htmlOnClick: function () {
-    window.open(
-      exporter.toHTMLSnippetURI(
+    openExport(function () {
+      return exporter.toHTMLSnippetURI(
         uistate.getSource(),
         uistate.getLanguage(),
         {
@@ -57,16 +65,16 @@ module.exports = {
           namedStyle: uistate.getNamedStyle()
         }
       )
-    )
+    })
   },
   dotOnClick: function () {
-    window.open(exporter.todotURI(uistate.getAST()))
+    openExport(function () { return exporter.todotURI(uistate.getAST()) })
   },
   vanillaOnClick: function () {
-    window.open(exporter.toVanillaMscGenURI(uistate.getAST()))
+    openExport(function () { return exporter.toVanillaMscGenURI(uistate.getAST()) })
   },
   doxygenOnClick: function () {
-    window.open(exporter.toDoxygenURI(uistate.getAST()))
+    openExport(function () { return exporter.toDoxygenURI(uistate.getAST()) })
   },
   urlOnClick: function () {
     window.history.replaceState(

@@ -1,0 +1,6 @@
+{
+  "format": "umd",
+  "dependencies": {
+    "parserHelpers": "./parserHelpers"
+  }
+}

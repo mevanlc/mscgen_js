@@ -47,6 +47,17 @@ E.g  `https://sverweij.github.io/mscgen_js/feature/snazz-the-firp`
 - ```make clean``` removes built production files as well as all generated files in the src tree
 
 ## Quality checks
+
+The `mscgenjs` dependency is a local npm workspace in `vendor/mscgenjs-core`.
+`npm install` installs its build/test tools; normal editor builds and tests compile
+the core first. `npm run build:core` builds it independently, and `npm run check:core` runs its dependency and coverage checks after a build. Generated core
+files are ignored. See the workspace's `VENDOR.md` for provenance and local changes.
+
+`npm run test:browser` builds locally and checks native SVG bounds, visibility,
+lazy strokes, raster exports, and editor conversion guards in headless Chrome.
+It uses an isolated temporary profile; set `CHROME_BIN` if Chrome is not in its
+usual macOS location or on PATH. The report is saved in `build/browser-check.json`.
+
 - `npm test`
     - runs the unit/ regression tests
     - (some  checks are still run manually with a well trained pair of eyeballs ...)
